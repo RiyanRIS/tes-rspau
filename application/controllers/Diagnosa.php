@@ -44,11 +44,11 @@ class Diagnosa extends CI_Controller {
 
     public function ubah($id = null)
 	{
-        // if(!isset($id)){
-        //     $this->session->set_flashdata('msg', '<div class="alert alert-danger">Id kosong, ulangi lagi.</div>');
-        //     redirect("diagnosa");
-        //     die();
-        // }
+        if(!isset($id)){
+            $this->session->set_flashdata('msg', '<div class="alert alert-danger">Id kosong, ulangi lagi.</div>');
+            redirect("diagnosa");
+            die();
+        }
 
         $data['pasien'] = $this->PasienModel->getById($id);
         $data['list_diagnosa'] = $this->DiagnosaModel->getAll();
@@ -77,11 +77,11 @@ class Diagnosa extends CI_Controller {
     }
 
     public function hapus($id = null){
-        // if(!isset($id)){
-        //     $this->session->set_flashdata('msg', '<div class="alert alert-danger">Id kosong, ulangi lagi.</div>');
-        //     redirect("diagnosa");
-        //     die();
-        // }
+        if(!isset($id)){
+            $this->session->set_flashdata('msg', '<div class="alert alert-danger">Id kosong, ulangi lagi.</div>');
+            redirect("diagnosa");
+            die();
+        }
 
         $this->PasienModel->delete(array( 'id' => $id));
         $this->session->set_flashdata('msg', '<div class="alert alert-success">Data Berhasil Dihapus</div>');

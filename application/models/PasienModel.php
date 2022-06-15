@@ -7,7 +7,7 @@ class PasienModel extends CI_Model {
 
 	public function getAll()
 	{
-        $this->db->from($this->table)->join('diagnosa', $this->table.".id_diagnosa = diagnosa.id");
+        $this->db->from($this->table)->select($this->table.'.*, diagnosa.diagnosa')->join('diagnosa', $this->table.".id_diagnosa = diagnosa.id");
 
         $query = $this->db->get();
         return $query->result();
